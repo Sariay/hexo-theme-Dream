@@ -1,0 +1,35 @@
+<div class="post-number">
+    <i class="icon-book">
+		<% if(is_category()) { %>
+			
+			<%
+				var number1 = 0;
+				site.posts.sort('date','desc').each(function(post){
+					post.categories.forEach(function(category, i){
+						if(category.name === page.category)
+							number1++;
+					});
+				});
+			%>
+			<%= page.category %> <%= number1 %> <%= __('pian') %>
+				
+		<% } else if(is_tag()) { %>
+				 
+			<%	
+				var number2 = 0;
+				site.posts.sort('date','desc').each(function(post){
+					post.tags.forEach(function(tag, i){
+						if(tag.name === page.tag)
+							number2++;
+					});
+				});
+			%>
+			<%= page.tag %> <%= number2 %> <%= __('pian') %>
+				
+		<% } else if(is_archive()) { %>
+			
+			<%= __('total') %> <%= site.posts.length %> <%= __('pian') %> <%= __('post') %>
+			
+		<% } %>
+	</i>
+</div>

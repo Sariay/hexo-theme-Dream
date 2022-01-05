@@ -1,0 +1,15 @@
+<% if (post.categories && post.categories.length){ %>
+	<% post.categories.forEach( function(category, i){ %>		
+
+		<% if(type === "type1") { %>
+     		<%- category.name %>
+     	<% } %>
+     	
+     	<% if(type === "type2") { %>
+     		<a href="<%= url_for(category.path) %>" class="category">
+     			<%= category.name %>
+     		</a>      	
+     	<% } %>
+     	
+    <% }) %>
+<% } %>

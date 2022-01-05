@@ -1,0 +1,61 @@
+<%- partial('_partial/header') %>
+
+<div class="container" id="other-page">
+	<div class="box">
+		<!-- title -->
+		<div class="page-header">
+			<i class="icon-paper-plane">
+				<% if (page.type === "tags") { %>
+
+					<%= __('total') %> <%= site.tags.length %> <%= __('ge') %> <%= __('tag_tags') %>
+
+				<% } else if (page.type === "categories") { %>
+
+					<%= __('total') %> <%= site.categories.length %> <%= __('ge') %> <%= __('category_categories') %>
+
+				<% } else { %>
+
+					<%= page.title %>
+
+				<% } %>	
+			</i>
+		</div>
+
+		<!-- content -->
+		<% if (page.type === "tags") { %>
+
+			<div class="tags">
+				<%- 
+					list_tags({show_count: true, order: 1}) 		
+		        %>
+			</div>
+
+		<% } else if (page.type === "categories") { %>
+
+			<div class="categories">
+				<%- 
+					list_categories({show_count: true, order: 1}) 
+				%>
+			</div>
+
+		<% } else { %>
+
+			<div class="other">
+				<%- page.content %>
+			</div>
+
+		<% } %>
+
+		<!-- other -->
+		<% if ((page.type === "tags") || (page.type === "categories")) { %>
+			<!-- 
+				ajax 查询相应标签or分类的文章 
+				We can use "Content filtering plugin" to instead ajax!
+			-->
+			<div class="layout-TCP-container">
+				<div id="TCP-title"></div>
+				<div id="TCP-content"></div>
+			</div>
+		<% } %>	
+	</div>
+</div>

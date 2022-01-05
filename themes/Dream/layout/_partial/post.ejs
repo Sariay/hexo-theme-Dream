@@ -1,0 +1,112 @@
+<div id="top">
+	<div class="left-menu">
+		<ul>
+			<li><a href="/" class="item-anchor"><%= __('home') %></a></li>
+			<li><a href="javascript:;" class="item-anchor popup-trigger" ><%= __('search') %></a></li>
+		</ul>		
+	</div>
+	<div class="middle-title">
+		<span id="top-post-title">
+			<%- partial('post/title',{post:post, type: "type1"}) %>	
+		</span>		
+	</div>
+	<div class="right-menu">
+		<ul>
+			<li><a id="star-button" rel="unlike"><i class="icon-heart-empty-1"></i></a></li>
+			<li><a data-toggle="modal" data-target=".comment-modal-lg"><i class="icon-chat-empty"></i></a></li>
+			<li><a data-toggle="modal" data-target=".download-modal-lg"><i class="icon-download"></i></i></a></li>
+		</ul>		
+	</div>
+</div>
+<div class="container" id="post-page">
+	<div class="blog single row">
+		<div class="col-sm-12 col-sm-offset-0 blog-content">
+			<div class="blog-posts classic-view box">
+				<div class="post">
+              		<h1 class="post-title">
+              			<%- partial('post/title', {post: post, type: "type2"}) %>
+              		</h1>
+              		<div class="meta"> 
+              			<span class="date"><%- partial('post/date', {post: post, date_format: null, type: "type2"}) %></span> 
+              			<span class="category"><%- partial('post/category', {post: post, type: "type2"}) %></span> 
+              			<%- partial('post-like') %>
+              		</div>
+              										
+					<div class="post-content">
+						<div id="main-text">
+							<%- post.content %>
+						</div>
+						<%- partial('post/gallery') %>
+						<div id="main-albums">
+							<%- partial('post-photos') %>
+						</div>																		
+					</div>
+					<!-- /.post-content -->
+
+					<div class="meta tags">
+						<%- partial('post/tag', {post: post, type: "type2"}) %>
+					</div>
+					
+					
+					<%- partial('plugin/share') %>
+					<!-- /share -->			
+				</div>
+				<!-- .post -->
+			</div>
+			<!-- /.blog-posts -->
+		</div>
+		<!-- /.blog-content -->
+	</div>
+	<!-- /.blog -->
+
+	<%- partial('post-related') %>	
+</div>
+<!--/.container -->
+
+
+
+
+
+<div id="comment-modal">
+	<div class="modal fade comment-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  		<div class="modal-dialog modal-lg" role="document">
+    		<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="gridSystemModalLabel">
+						<%= __('comment') %>
+					</h4>
+				</div>
+				<div class="modal-body">
+					<%- partial('plugin/comment')%>
+				</div>
+    		</div>
+  		</div>
+	</div>	
+</div>
+
+<div id="download-modal">
+	<div class="modal fade download-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">	
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="gridSystemModalLabel">
+						<%= __('download') %>
+					</h4>
+				</div>
+				<div class="modal-body" id="imgeZip-download-status">
+					
+						你将打包下载“今日图片”，确定？				
+				</div>
+				<div class="modal-footer">       				 
+       				 <button type="button" class="btn btn-red" id="imgeZip-download-link"><%= __('is_download') %></button>
+				</div>
+			</div>
+		</div>
+	</div>	
+</div>

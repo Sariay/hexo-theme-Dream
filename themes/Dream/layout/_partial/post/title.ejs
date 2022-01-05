@@ -1,0 +1,17 @@
+<% if (post.link || post.title){ %>
+	
+	<% if(type === "type1") { %>
+		
+		<%= post.title %>
+	
+	<% } %>
+	
+	<% if(type === "type2") { %>
+		
+		<a href="<%- url_for(post.path) %>" itemprop="url">
+			<%= post.title %>
+		</a>
+		
+	<% } %>
+	
+<% } %>

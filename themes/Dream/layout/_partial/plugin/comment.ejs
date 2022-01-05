@@ -1,0 +1,27 @@
+<!-- 
+	Suggestion: it is best to use one plugin at a time. 
+-->
+<% if(theme.comment.enable) { %>
+
+	<% if(theme.gitalk.enable) { %>
+
+		<!-- comment gitalk -->
+		<%- partial('comment/gitalk') %>
+
+	<% } else if(theme.valine.enable && !theme.leancloud_count.enable) { %>
+
+		<!-- comment valine -->
+		<%- partial('comment/valine') %>
+
+	<% } else if(theme.livere.enable) { %>
+		
+		<!-- comment valine -->
+		<%- partial('comment/livere') %>
+		
+	<% } else { %>
+
+		<!-- I don't know, hia hia hia! -->
+		
+	<% } %>
+	
+<% } %>

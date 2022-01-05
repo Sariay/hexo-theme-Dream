@@ -1,0 +1,121 @@
+<% 
+	var currentPostTitle = post.title, 
+		relatePostsArry = [],
+		result =[],
+		postsEnable = theme.relate.enable,
+		postsLimt = theme.relate.posts_limit,
+		postsExcerpt = theme.relate.posts_excerpt,
+		sitePostsLen = site.posts.length;
+
+    //Check post exists in postArray?
+    function checkDup(post, postArray){
+        var title = post.title, 
+            id = post.id;
+        for (var i = 0; i < postArray.length; i++){
+            if(post){
+                if(postArray[i]){
+                    if(title === postArray[i].title && id === postArray[i].id){
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+	//Get all relate posts by tag.name or category.name & Remove duplicate posts.
+	function getPosts(){		
+		post.categories.forEach(function(category, i){
+			site.categories.findOne({'name': category.name}).posts.sort('date', 'desc').each(function(post) {
+				if( (post.title !== currentPostTitle) && !checkDup(post, relatePostsArry) )
+					relatePostsArry.push(post);
+			});
+		});	
+		
+		post.tags.forEach(function(tag, i){
+			site.tags.findOne({'name': tag.name}).posts.sort('date', 'desc').each(function(post) {
+				//Remove duplicate posts.
+				if( (post.title !== currentPostTitle) && !checkDup(post, relatePostsArry) )
+					relatePostsArry.push(post);	
+			});
+		});
+		
+		if(relatePostsArry.length < postsLimt){
+			var distance = postsLimt - relatePostsArry.length, ij = 0;
+			site.posts.sort('date', 'desc').each(function(post) { 
+				if((post.title !== currentPostTitle) && !checkDup(post, relatePostsArry) && (ij < distance)){
+					relatePostsArry.push(post);
+					ij++;
+				}
+				if(ij >= distance)	
+					return relatePostsArry;
+			});
+		}
+		return relatePostsArry;
+	}
+
+	if( (postsEnable == true) && (sitePostsLen > 1) ){
+		result = getPosts();
+	}	
+%>
+								
+<div class="box related-post">
+	<div class="">
+		<h3><%= __('related_posts') %></h3>		
+	</div>
+	<div class="blog tiles">
+		<div class="items row row-offset-0">				
+			<% 
+	 			for(var i = 0; i < ( result.length <= postsLimt ? result.length : postsLimt ); i ++ ) { 	 			
+	 		%>								
+				<% if(i%9==0) { %>
+					<div class="post item col-xs-12 col-sm-6 col-md-4">
+				<% } else if(i%9==1) { %>
+					<div class="post item col-xs-12 col-sm-6 col-md-8">
+				<% } else if(i%9==2) { %>
+					<div class="post item col-xs-12 col-sm-6 col-md-8">
+				<% } else if(i%9==3) { %>
+					<div class="post item col-xs-12 col-sm-6 col-md-4">
+				<% } else if(i%9==4) { %>
+					<div class="post item col-xs-12 col-sm-6 col-md-6">
+				<% } else if(i%9==5)  {%>
+					<div class="post item col-xs-12 col-sm-6 col-md-6">
+				<% } else if(i%9==6) { %>				
+					<div class="post item col-xs-12 col-sm-6 col-md-4">
+				<% } else if(i%9==7) { %>		
+					<div class="post item col-xs-12 col-sm-6 col-md-4">
+				<% } else if(i%9==8) { %>	
+					<div class="post item col-xs-12 col-sm-6 col-md-4">
+				<% } %>						
+						<figure class="overlay">
+							<a href="<%- url_for( result[i].path ) %>">
+								<div class="text-overlay caption">
+									<div class="info">
+										<h2 class="post-title">
+											<%- partial('post/title',{post: result[i], type: "type1"}) %>	
+										</h2>
+										<div class="meta"> 
+											<span class="date">
+												<%- partial('post/date',{post: result[i], date_format: null, type: "type1"}) %>	
+											</span> 
+											<span class="category">									
+												<%- partial('post/category',{post: result[i], type: "type1"}) %>	
+											</span> 
+											
+											
+										</div>
+									</div>
+								</div>
+								<%- image_tag(result[i].cover || theme.cover, {class: "related-img"}) %>
+							</a>
+						</figure>
+					</div>
+			<% 				
+				}
+			%>		
+		</div>
+		<!--/.items -->
+	</div>
+	<!--/.tiles -->
+</div>
+<!--/.box -->

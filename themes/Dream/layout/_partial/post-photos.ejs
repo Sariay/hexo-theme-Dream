@@ -1,0 +1,47 @@
+<div class="box post-photos">
+	<div class="blog tiles">
+		<div class="items row row-offset-0">
+			<% if (post.albums && post.albums.length){ %>
+				<% post.albums.forEach(function(photo, i){ %>
+					<% if(i%9==0) { %>
+						<div class="post item col-xs-12 col-sm-6 col-md-4">
+					<% } else if(i%9==1) { %>
+						<div class="post item col-xs-12 col-sm-6 col-md-8">
+					<% } else if(i%9==2) { %>
+						<div class="post item col-xs-12 col-sm-6 col-md-8">
+					<% } else if(i%9==3) { %>
+						<div class="post item col-xs-12 col-sm-6 col-md-4">
+					<% } else if(i%9==4) { %>
+						<div class="post item col-xs-12 col-sm-6 col-md-6">
+					<% } else if(i%9==5)  {%>
+						<div class="post item col-xs-12 col-sm-6 col-md-6">
+					<% } else if(i%9==6) { %>				
+						<div class="post item col-xs-12 col-sm-6 col-md-4">
+					<% } else if(i%9==7) { %>		
+						<div class="post item col-xs-12 col-sm-6 col-md-4">
+					<% } else if(i%9==8) { %>	
+						<div class="post item col-xs-12 col-sm-6 col-md-4">
+					<% } %>						
+							<figure class="overlay">
+								<a data-fancybox="gallery" data-caption="<%- photo[1] %>" href="<%- photo[0] %>">
+									<div class="text-overlay caption">
+										<div class="info">
+											<h2 class="post-title">
+												<% if (photo && photo.length > 1){ %>
+													<%- photo[1] %>
+												<% } %>  	
+											</h2>
+										</div>
+									</div>
+									<img src="<%- photo[0] %>" alt="<%- photo[1] %>" class="albums-img">
+								</a>
+							</figure>
+						</div>
+			        <% }) %>
+				<% } %>			
+			</div>
+			<!--/.items -->
+		</div>
+	<!--/.tiles -->
+</div>
+<!--/.box -->

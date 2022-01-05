@@ -1,0 +1,72 @@
+<!-- Progress bar -->
+<div id="progress-bar"></div>
+
+<!-- Progress percent -->
+<div id="progress-percentage">
+	<h1>0.0%</h1>
+</div>
+
+<div class="github-wrapper">
+	<a class="btn btn-full" href="https://github.com/">Use the theme @ Github</a>
+</div>
+
+<footer class="inverse-wrapper">
+	<div class="container inner">
+		<div class="row">
+
+			<div class="col-sm-12 col-md-4">
+				<div class="widget">
+					<h4 class="widget-title">Follow Me</h4>
+					<ul class="social">
+						<% for(var i in theme.social) { %>
+							<li>
+								<a href="<%- url_for( theme.social[i].url ) %>">
+									<i class="<%- theme.social[i].icon %>"></i>
+								</a>
+							</li>
+						<% } %>						
+					</ul>
+				</div>
+			</div>
+			<!-- /column -->
+			
+			<div class="col-sm-12 col-md-4">
+				<div class="widget">
+					<h4 class="widget-title">Get in Touch</h4>
+					<p>				
+						<%- theme.email %>
+					</p>
+				</div>
+			</div>
+			<!-- /column -->
+
+			<div class="col-sm-12 col-md-4">
+				<div class="widget">
+					<h4 class="widget-title">Copyright Information</h4>
+					<p>
+						<% if( theme.since && theme.since < date(new Date(), 'YYYY') ) { %> 
+							&copy; <%= theme.since %> - <%= date(new Date(), 'YYYY') %> <%= theme.author || config.author || config.title %>. All Rights Reserved.
+						<% } else { %> 
+							&copy; <%= date(new Date(), 'YYYY') %> <%= theme.author || config.author || config.title %>. All Rights Reserved.
+						<% } %>						
+					</p>
+				</div>
+			</div>
+			<!-- /column -->
+		</div>
+		<!-- /.row -->
+	</div>
+	<!-- .container -->
+	
+    <div class="sub-footer">
+      <div class="container inner">
+        <p class="text-center">
+        	<%- partial('plugin/statistics', {type: 'busuanzi-count'}) %>
+        	<a href="javascript:zh_tran('s');" class="zh_click" id="zh_click_s">简体</a> 
+			<a href="javascript:zh_tran('t');" class="zh_click" id="zh_click_t">繁體</a>
+        </p>
+      </div>
+      <!-- .container --> 
+    </div>
+    <!-- .sub-footer --> 
+</footer>

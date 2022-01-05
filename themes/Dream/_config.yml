@@ -1,0 +1,159 @@
+# 01-HEADER
+# menu
+menu:
+    home: /
+    archive: /archives
+    categories: /categories
+    tags: /tags
+    about: about
+    profile: /profile
+    video: /categories/photo/
+    photo: /categories/photo/
+
+# favicon, logo & index page background image
+favicon: /img/favicon3.ico
+logo: 
+    name: SARIAY
+    imag: /img/logo.jpg
+banner: 
+    bg: /malory/images/art/pagetitle1.jpg #站点banner背景图
+    motto: 人生若只如初见，何事秋风悲画扇——GALLERY
+cover: /malory/images/art/pagetitle1.jpg #文章统一封面图
+
+# 02-PROLOADER
+# animation: spinner, transition or cyclic
+preloader:
+    enable: true
+    animation: transition
+
+# 04-POST
+# post_relate
+relate:
+    enable: true
+    posts_limit: 10
+    posts_excerpt: 120
+
+# post_comment
+comment:
+    enable: true
+
+gitalk:
+    enable: false
+    clientID: 'bf19f33d43d567dce87e' 
+    clientSecret: '32f473f6f860a8f82ae10fcfd978c83c0954b93f' 
+    repo: annie-gitalk 
+    owner: Sariay 
+    admin: Sariay 
+    distractionFreeMode: true
+    #去除 more、index.html、?query=123等格式尾部 
+    hrefTrimend: '#.*$,\\?.*$,index.html$' 
+    
+valine: 
+    enable: false
+    appid: 'DU84u3YWC8In5QjcOvBiDFlo-gzGzoHsz'
+    appkey: 'Ae6l2pVhIBRlKbN115rMdn8K'
+    placeholder: no any!
+    
+livere: 
+    enable: true
+    livere_uid: 'sdd'
+    
+# post_count & site_analytics
+leancloud_count:
+    enable: true
+    appid: 'fBO1y3uGCpbvlHw1B2iGPkao-gzGzoHsz'
+    appkey: 'nuFLcO4jJd90kVHJ92bGavDw'
+    like_post:
+        enable: true
+    visit_post:
+        enable: true
+    topN_post: 
+        enable: true #param1 for topN_post
+        limit: 10 #param2 for topN_post
+busuanzi_count:
+    enable: true
+    
+baidu_analytics:
+    enable: false
+    id: 
+cnzz_analytics:
+    enable: false
+    id:
+google_analytics:
+    enable: false
+    id:
+tencent_analytics:
+    enable: false
+    id:
+
+# post_excerpt
+excerpt:
+	enable: false
+	length: 200
+	
+# post_reward
+reward:
+	wechatPay: //wechat.img
+	aliPay: //ali.img
+	
+# post_imageDownload
+image_download:
+    enable: true
+    
+# post_share
+# 注意浏览器的内容拦截插件
+#https://www.addthis.com/
+addThis:
+    enable: false
+    id: 
+#http://share.baidu.com/code
+baiduShare:
+    enable: true
+    style: button # you can add slide style!
+#https://www.sharethis.com/onboarding-cms/    
+shareThis:
+    enable: false
+    id: 5c862b0996ec580017cff2d3
+       
+# 05-FOOTER
+# social
+social:
+    rss: 
+        url: /atom.xml
+        icon: icon-s-rss
+    github:
+        url: http://github.com/
+        icon: icon-s-github
+    pinterest: 
+        url: http://github.com/
+        icon: icon-s-pinterest
+    instagram:
+        url: http://github.com/
+        icon: icon-s-instagram
+email: 1261347403@qq.com
+
+# copyright  
+since: 2017
+author: SARIAY
+
+# 06-OTHERS
+# rss
+rss: /atom.xml
+
+# Local search
+# Dependencies: https://github.com/flashlab/hexo-generator-search
+local_search:
+    enable: true
+    # if auto, trigger search by changing input
+    # if manual, trigger search by pressing enter key or search button
+    trigger: auto
+    # show top n results per article, show all results by setting to -1
+    top_n_per_article: 2
+
+# when click, emerge heart
+love:
+    enable: true
+
+# totop
+totop:
+    enable: true

@@ -1,0 +1,63 @@
+<%- partial('_partial/header') %>
+
+<div class="container" id="index-page">
+	<div class="box">
+		<div class="blog tiles">
+			<div class="items row row-offset-0">
+				<% page.posts.each( function( post, i ) { %>
+					<% if(i%9==0) { %>
+						<div class="post item col-xs-12 col-sm-6 col-md-4">
+					<% } else if(i%9==1) { %>
+						<div class="post item col-xs-12 col-sm-6 col-md-8">
+					<% } else if(i%9==2) { %>
+						<div class="post item col-xs-12 col-sm-6 col-md-8">
+					<% } else if(i%9==3) { %>
+						<div class="post item col-xs-12 col-sm-6 col-md-4">
+					<% } else if(i%9==4) { %>
+						<div class="post item col-xs-12 col-sm-6 col-md-6">
+					<% } else if(i%9==5)  {%>
+						<div class="post item col-xs-12 col-sm-6 col-md-6">
+					<% } else if(i%9==6) { %>				
+						<div class="post item col-xs-12 col-sm-6 col-md-4">
+					<% } else if(i%9==7) { %>		
+						<div class="post item col-xs-12 col-sm-6 col-md-4">
+					<% } else if(i%9==8) { %>	
+						<div class="post item col-xs-12 col-sm-6 col-md-4">
+					<% } %>						
+							<figure class="overlay">
+								<a href="<%- url_for( post.path ) %>">
+									<div class="text-overlay caption">
+										<div class="info">
+											<h2 class="post-title">
+												<%- partial('post/title',{post:post, type: "type1"}) %>	
+											</h2>
+											<div class="meta"> 
+												<span class="date">
+													<%- partial('post/date',{post:post, date_format: null, type: "type1"}) %>	
+												</span> 
+												<span class="category">									
+													<%- partial('post/category',{post:post, type: "type1"}) %>	
+												</span> 
+												
+												<%- partial('post-like',{post: post}) %>
+												<%# partial('plugin/statistics', {type: 'leancloud-count'}) %>
+											</div>
+										</div>
+									</div>
+									<%- image_tag(post.cover || theme.cover, {class: ""}) %>
+								</a>
+							</figure>
+						</div>
+				<% }); %>			
+			</div>
+			<!--/.items -->
+		</div>
+		<!--/.tiles -->
+		
+		<%- partial('paginator') %>
+		<!-- /.pagination -->
+
+	</div>
+	<!--/.box -->
+</div>
+<!--/.container -->

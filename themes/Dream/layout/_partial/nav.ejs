@@ -1,0 +1,35 @@
+<div class="nav">
+	<a href="/" class="logo"><%- theme.logo.name %></a>
+	<div class="btn-nav">
+		<span class="icon-bar top"></span>
+		<span class="icon-bar middle"></span>
+		<span class="icon-bar bottom"></span>
+	</div>
+</div>
+
+<div class="nav-content hideNav hidden">
+	<ul class="nav-list">
+		<% for(var i in theme.menu) { %>
+			<li class="nav-item menu-<%= i %>">
+				<a href="<%- url_for(theme.menu[i]) %>" class="item-anchor menu-item-<%= i %>"><%- __(i) %></a>
+			</li>
+		<% } %>
+
+		<% if (theme.local_search.enable) { %>
+			<li class="nav-item menu-search">
+				<a href="javascript:;" class="item-anchor popup-trigger" ><%= __('search') %></a>
+			</li>
+		<% } %>
+	</ul>
+	<div class="copyright">
+		<p>
+			<% if( theme.since && theme.since < date(new Date(), 'YYYY') ) { %> 
+				&copy;<%= theme.since %> - <%= date(new Date(), 'YYYY') %> <%= theme.author || config.author || config.title %>.
+			<% } else { %> 
+				&copy;<%= date(new Date(), 'YYYY') %> <%= theme.author || config.author || config.title %>.
+			<% } %>
+			
+			Powered by <%- link_to("http://hexo.io/", "Hexo", {external: true})%>, theme <%- link_to("https://github.com/Sariay/hexo-theme-Dream", "Dream", {external: true})%> by Sariay.					
+		</p>
+	</div>
+</div>

@@ -1,0 +1,11 @@
+<% if (page.prev) { %>
+	<a href="<%- url_for(page.prev.path) %>" title="<%- page.prev.title %>" rel="prev">
+		&laquo;
+		<%= __('prev_post') %>
+	</a>
+	<% } %>
+<% if (page.next) { %>
+	<a href="<%- url_for(page.next.path) %>" title="<%- page.next.title %>" rel="next">
+		<%= __('next_post') %>&raquo;
+	</a>
+<% } %>

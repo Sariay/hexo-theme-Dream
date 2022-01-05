@@ -1,0 +1,54 @@
+<%- partial('_partial/header') %>
+
+<div class="container" id="archive-page">
+	<div class="box">
+		<%- partial('post-number') %>
+		
+	    <!-- Archive by month, called by page( categories, tags... ) -->
+        <div id="layout-archive-month">
+            <% 
+                var last_year, last_month;
+            %>
+            <% page.posts.each(function(post, i){ %>
+                <% 
+                    var year = post.date.year(),
+                        month = post.date.format('MM'); 
+                    if (last_year != year){ 
+                        if (last_year != null){ 
+                            last_month = null; 
+                        } 
+                        last_year = year; 
+                    } 
+                %>
+
+                <% if (!last_month || last_month != month) {%>
+                    <% last_month = month; %>
+                    <h3 class="archive-year">
+                        <!-- <a href="<%- url_for(config.archive_dir + '/' + year + '/' + month) %>"> -->
+                        <a>
+                            <%= year %> - <%=  month %>
+                        </a>
+                    </h3>
+                <% } %>
+
+                <ul>
+                    <li>
+                        <a href="<%- url_for(post.path) %>">
+                            <em>
+                            	<%- partial('post/date',{post: post, type: "type1", date_format: "MM-DD"}) %>                                
+                            </em>
+                            <span itemprop="name">
+                            	<%- partial('post/title',{post: post, type: "type1"}) %>                                
+                            </span>
+                            
+                            <%- partial('post/tag',{post: post, type: "type2"}) %>  
+       
+                        </a>
+                    </li>
+                </ul>
+            <% }); %>
+        </div>
+        
+        <%- partial('paginator') %>
+	</div>
+</div>

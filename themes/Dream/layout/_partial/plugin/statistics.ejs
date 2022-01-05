@@ -1,0 +1,19 @@
+<% if(type === 'busuanzi-count'){ %>
+
+	<!-- busuanzi -->
+	<%- partial('statistics/busuanzi') %>
+
+<% } else if(type === 'leancloud-count'){ %>
+
+	<!-- leancloud -->
+	<%- partial('statistics/leancloud') %>
+
+ <% } else if(type === 'site-analysis') { %>
+
+	<!-- DIY -->
+	<%- partial('statistics/baidu-analytics') %>
+	<%- partial('statistics/cnzz_analytics') %>
+	<%- partial('statistics/google_analytics') %>
+	<%- partial('statistics/tencent_analytics') %>
+	
+ <% } %>

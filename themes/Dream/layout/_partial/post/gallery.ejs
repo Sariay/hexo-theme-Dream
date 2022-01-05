@@ -1,0 +1,23 @@
+<script type="text/javascript">
+	var titleID = $('.post .post-title'),
+		imageID = $('#main-text img'),
+		videoID = $('#main-text video');
+		
+	var postTitle = titleID.text() ? titleID.text() : "No post title!";	
+		
+	imageID.each(function() {
+		var imgPath = $(this).attr('src'),			
+			imgTitle = $(this).attr('alt') ? $(this).attr('alt') : "No image description!";	
+			
+		//给每个匹配的<img>元素打包, 即添加父元素<a>
+		$(this).wrap('<a data-fancybox="gallery" data-caption=" 《 '+postTitle+' 》 '+imgTitle+' "  href=" '+imgPath+' "> </a>');
+	});
+	
+	videoID.each(function() {
+		var videoPath = $(this).attr('src');			
+								
+		//给每个匹配的<img>元素打包, 即添加父元素<a>
+		$(this).wrap('<a data-fancybox href=" '+videoPath+' "> </a>');
+	});
+	//TODO：支持html5 video
+</script>
